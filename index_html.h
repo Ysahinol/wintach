@@ -1,0 +1,109 @@
+const char index_html[] PROGMEM = R"rawliteral(
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wintach</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        width: 300px;
+        height: 400px;
+        text-align: center;
+        display: flex;
+        flex-direction: column; /* Öğeleri alt alta hizala */
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(
+          63,
+          217,
+          223,
+          0.7
+        ); /* Container arka plan rengi ve opaklık */
+        border-radius: 20px;
+        padding: 20px;
+      }
+      button {
+        padding: 15px 30px;
+        font-size: 18px;
+        margin: 10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+      }
+
+      #openButton {
+        background-color: #4caf50; /* Yeşil */
+        color: white;
+        width: 150px;
+        margin-top: 65px;
+      }
+
+      #closeButton {
+        background-color: #ff2020; /* Kırmızı */
+        color: white;
+        width: 150px;
+      }
+      button:hover {
+        opacity: 0.8; /* Buton üzerine gelindiğinde opaklık */
+      }
+      .status {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+      #image {
+        width: 100px;
+      }
+      #title {
+        font-size: 30px;
+        font-family: sans-serif;
+        color: darkblue;
+        background-color: aliceblue;
+        padding: 15px;
+        border-radius: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p id="title">Wintach</p>
+      <img
+        id="image"
+        src="https://cdn-icons-png.flaticon.com/512/4951/4951078.png"
+      />
+      <button id="openButton" onclick="openMotor()">OPEN</button>
+      <button id="closeButton" onclick="closeMotor()">CLOSE</button>
+      <p class="status" id="statusMessage"></p>
+    </div>
+    <script>
+      function openMotor() {
+        fetch("/open")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("statusMessage").textContent = data;
+          })
+          .catch((error) => console.error("Hata:", error));
+      }
+
+      function closeMotor() {
+        fetch("/close")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("statusMessage").textContent = data;
+          })
+          .catch((error) => console.error("Hata:", error));
+      }
+    </script>
+  </body>
+</html>
+)rawliteral";
