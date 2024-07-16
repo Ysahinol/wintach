@@ -83,7 +83,7 @@
 
   <script>
     function openMotor() {
-      fetch("http://192.168.68.142:80/open")
+      fetch("http://192.168.68.142/open")
         .then(response => response.text())
         .then(data => {
           document.getElementById("statusMessage").textContent = data;
