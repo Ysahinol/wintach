@@ -11,7 +11,7 @@ const int reedPin = 19;      // Reed switch pin
 WebServer server(80);        // Web sunucusu portu
 
 // index_html.h dosyasını dahil et
-#include "index_html.h"
+#include "index.html"
 
 void setup() {
   Serial.begin(115200);
