@@ -81,25 +81,24 @@
     <p class="status" id="statusMessage"></p>
   </div>
 
-<script>
-  function openMotor() {
-    fetch("http://192.168.68.142/open")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("statusMessage").textContent = data;
-      })
-      .catch(error => console.error("Hata:", error));
-  }
+  <script>
+    function openMotor() {
+      fetch("https://192.168.68.142/open")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("statusMessage").textContent = data;
+        })
+        .catch(error => console.error("Hata:", error));
+    }
 
-  function closeMotor() {
-    fetch("http://192.168.68.142/close")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("statusMessage").textContent = data;
-      })
-      .catch(error => console.error("Hata:", error));
-  }
-</script>
-
+    function closeMotor() {
+      fetch("https://192.168.68.142/close")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("statusMessage").textContent = data;
+        })
+        .catch(error => console.error("Hata:", error));
+    }
+  </script>
 </body>
 </html>
